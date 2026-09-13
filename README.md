@@ -25,7 +25,7 @@
 ## Quick Start
 
 ```bash
-git clone https://github.com/rohans/pulsepay-settlement.git
+git clone https://github.com/rohans2596-bot/pulsepay-settlement.git
 cd pulsepay-settlement
 npm start
 ```
