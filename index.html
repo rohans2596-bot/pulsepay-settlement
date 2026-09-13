@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PulsePay &mdash; Ultra-Low Latency Financial Settlement Core</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="fin-header">
+    <div class="brand-wrap">
+      <div class="logo-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+          <line x1="12" y1="1" x2="12" y2="23"/>
+          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>
+      </div>
+      <h1>PulsePay Core <span class="tag">LEDGER v2.4</span></h1>
+    </div>
+
+    <div>
+      <a href="../../projects.html" class="btn-nav">Back to Portfolio</a>
+    </div>
+  </header>
+
+  <main class="fin-main">
+    
+    <div class="left-column">
+      <section class="metrics-grid">
+        <div class="m-tile">
+          <span class="lbl">Total Settled Volume</span>
+          <span class="val" id="val-settled-vol">$42,891,402</span>
+        </div>
+        <div class="m-tile">
+          <span class="lbl">Reconciliation Rate</span>
+          <span class="val" style="color: var(--accent-green);">99.999%</span>
+        </div>
+        <div class="m-tile">
+          <span class="lbl">Clearing Latency</span>
+          <span class="val" style="color: var(--accent-cyan);">0.42 ms</span>
+        </div>
+        <div class="m-tile">
+          <span class="lbl">Fraud Blocks (24h)</span>
+          <span class="val" style="color: var(--accent-amber);">14 Flags</span>
+        </div>
+      </section>
+
+      <section class="ledger-card">
+        <div class="card-head">
+          <h3>Real-Time Double-Entry Journal (Streaming)</h3>
+          <span style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-green);">&bull; LIVE CLEARING</span>
+        </div>
+
+        <table class="ledger-table">
+          <thead>
+            <tr>
+              <th>TXID</th>
+              <th>Origin Account</th>
+              <th>Destination</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="ledger-tbody">
+            <!-- Streamed by ledger.js -->
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+    <aside class="side-card">
+      <h3 style="font-size: 16px; font-weight: 700;">Simulate Immediate Payout</h3>
+      
+      <div class="form-group">
+        <label>Debit Account (Source)</label>
+        <input type="text" class="form-input" id="inp-src" value="acct_vault_reserve_01" />
+      </div>
+
+      <div class="form-group">
+        <label>Credit Account (Target)</label>
+        <input type="text" class="form-input" id="inp-dest" value="acct_merchant_prime_88" />
+      </div>
+
+      <div class="form-group">
+        <label>Transfer Amount (USD)</label>
+        <input type="number" class="form-input" id="inp-amount" value="12500" />
+      </div>
+
+      <button class="btn-dispatch" id="btn-dispatch-tx">Dispatch Idempotent Settlement</button>
+
+      <div class="fraud-matrix-box">
+        <strong style="color: #ffffff;">Automated Invariant Check:</strong><br />
+        &bull; Cryptographic idempotency key: <code>SHA256</code><br />
+        &bull; Double-entry audit balance: <strong>0 discrepancy</strong><br />
+        &bull; P99 settlement SLA: <strong>&lt; 5ms</strong>
+      </div>
+    </aside>
+
+  </main>
+
+  <script src="ledger.js"></script>
+</body>
+</html>
